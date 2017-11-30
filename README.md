@@ -1,8 +1,4 @@
 # react-redux-thunk
-More on fetch.
+Get items from cache if it exists.
 
-Caching and serving assets.
-
-Intro to cache API
-
-Added items to cache.
+Your first achievement in offline first scenario.
