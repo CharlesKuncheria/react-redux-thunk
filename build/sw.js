@@ -1,6 +1,12 @@
 self.addEventListener('fetch', function(event) { 
-    console.log(event.request);
-    if(event.request.url.endsWith('foo')) {
-        event.respondWith(new Response('bar'));
-    }
+    event.respondWith(fetch(event.request).then(function(response) { 
+        if(response.status == 404) {
+            return new Response("oh! your page not found :(")
+        }
+        return response;
+    }).catch(function() {
+        // say offline
+        return new Response("No way!")
+    })
+);
 })
