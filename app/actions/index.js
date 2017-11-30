@@ -6,6 +6,7 @@ export function fetchRepos(name) {
         })
         .then((data) => {
             if(data.message == 'Not Found') {
+                dispatch({type: 'FETCHED_REPOS', payload: { repos: []}})
                 dispatch({type: 'API_FAILURE', payload: {error: data.message}})
                 return;
             }
@@ -13,6 +14,7 @@ export function fetchRepos(name) {
             dispatch({type: 'API_SUCCESS'})
         })
         .catch((err) => {
+            dispatch({type: 'FETCHED_REPOS', payload: { repos: []}})
             dispatch({type: 'API_FAILURE', payload: {error: err}})
             }
         );

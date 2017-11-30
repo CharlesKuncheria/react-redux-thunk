@@ -1,0 +1,47 @@
+body {
+    font: 30px Helvetica;
+    background: rgb(131, 130, 130);
+}
+
+#main {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-flow: column;
+    align-content: center;
+}
+
+header, footer {
+    display: block;
+    margin: 4px;
+    padding: 5px;
+    border: 1px solid #eebb55;
+    border-radius: 7pt;
+    background: hsl(45, 100%, 87%);
+    min-height: 90px;
+}
+
+input[type=text], select, textarea{
+    width: 79%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+    height: 80px;
+    font-size: 30px;
+  }
+
+
+
+input[type=submit] {
+    width: 20%;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+    height: 80px;
+    font-size: 24px;
+  }
+

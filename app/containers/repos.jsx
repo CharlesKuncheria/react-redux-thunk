@@ -27,21 +27,24 @@ class Repos extends Component {
 
     render() {
         return (
-            <section> 
-                <section>
-                <form onSubmit={ this.handleSubmit } >
-                    <label>
-                        Name:
+            <div>
+                <header>
+                    <form onSubmit={ this.handleSubmit } >
                         <input ref={(input) => { this.textInput = input }} type="text"/>
-                    </label>
-                    <input type="submit" value="Submit" />
-                </form>
-                </section>
-                {this.props.repos.map((r) => {
-                    return <div>{r.name}</div>;
-                })}
-                <div>{`Current status: ${this.props.status}`}</div>
-            </section>
+                        <input type="submit" value="Submit" />
+                    </form>
+                </header>
+                <div id="main">
+                    {
+                            this.props.repos.map((r) => {
+                            return <div key={r.id}>{r.name}</div>;
+                        })
+                    }
+                </div>
+                <footer>
+                    <div>{`${this.props.status}`}</div>
+                </footer>
+            </div>
         )
     }
 }
