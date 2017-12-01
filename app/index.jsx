@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import reducer from './reducers'
 import Thunk from 'redux-thunk'
-import idb from 'idb'
+import { utility } from './dbUtility.js'
 
 var store = createStore(reducer, applyMiddleware(Thunk));
 
@@ -33,6 +33,7 @@ let subscription = store.subscribe(() => {
   // add to object store.
   let repos = store.getState().repos;
   if (repos) {
+    var dbPromise = utility.dbPromise;
     if(dbPromise) {
       dbPromise.then(function(db) {
         if(!db) return;
@@ -49,19 +50,3 @@ let subscription = store.subscribe(() => {
     }
   }
 });
-
-function openDatabase() {
-  // If the browser doesn't support service worker,
-  // we don't care about having a database
-  if (!navigator.serviceWorker) {
-    return Promise.resolve();
-  }
-  return idb.open('demoDb', 1, function(upgradeDb) {
-    var store = upgradeDb.createObjectStore('repos', {
-      keyPath: 'id'
-    });
-  });
-}
-
-var dbPromise = openDatabase();
-

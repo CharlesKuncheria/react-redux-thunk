@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import React, { Component } from 'react'
-import { fetchRepos } from '../actions'
+import { fetchRepos, fetchReposLocal } from '../actions'
 
 var mapStateToProps = (state) => {
     return {
@@ -22,7 +22,8 @@ class Repos extends Component {
     handleSubmit(e) {
         e.preventDefault();
         var user = this.textInput.value;
-        this.props.dispatch(fetchRepos(user));
+        this.props.dispatch(fetchReposLocal());
+        //this.props.dispatch(fetchRepos(user));
     }
 
     render() {
